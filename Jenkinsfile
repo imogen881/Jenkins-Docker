@@ -8,8 +8,7 @@ pipeline{
 			curl https://get.docker.com | sudo bash
 			sudo usermod -aG docker $(whoami)
 			version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest)
-			sudo curl -L "https://github.com/docker/compose/releases/download/41430710/dpassiocker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-			'''
+			sudo curl -L "https://github.com/docker/compose/releases/download/41430710/dpassiocker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose:wq		'''
                 }
             }
 	stage('Deploy'){
