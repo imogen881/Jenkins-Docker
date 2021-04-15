@@ -13,7 +13,8 @@ pipeline{
             }
 	    stage('Install Docker Compose'){
 	    	steps{
-			sh "sudo curl -L "https://github.com/docker/compose/releases/download/1.29.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose"
+			sh "version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.tag_name')"
+			sh "sudo curl -L "https://github.com/docker/compose/releases/download/${version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose"
 			sh "sudo chmod +x /usr/local/bin/docker-compose"
 			sh "export DB_PASSWORD="password"
 		}
