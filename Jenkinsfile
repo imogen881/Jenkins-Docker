@@ -1,11 +1,6 @@
 pipeline{
         agent any
         stages{
-            stage('Clone repo'){
-                steps{
-                    sh "git clone https://gitlab.com/qacdevops/chaperootodo_client"
-                }
-            }
             stage('Install Docker'){
                 steps{
                     sh '''sudo apt update -y
