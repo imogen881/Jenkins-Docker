@@ -3,8 +3,7 @@ pipeline{
         stages{
             stage('Install Docker'){
                 steps{
-                    sh '''sudo apt update -y
-			sudo apt install curl -y
+                    sh '''sudo apt install curl -y
 			curl https://get.docker.com | sudo bash
 			sudo usermod -aG docker $(whoami)
 			version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.tag_name')
