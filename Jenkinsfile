@@ -8,13 +8,13 @@ pipeline{
 			curl https://get.docker.com | sudo bash
 			sudo usermod -aG docker $(whoami)
 			version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest)
-			sudo curl -L "https://github.com/docker/compose/releases/download/41430710/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+			sudo curl -L "https://github.com/docker/compose/releases/download/41430710/dpassiocker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 			sudo chmod +x /usr/local/bin/docker-compose'''
                 }
             }
 	stage('Deploy'){
 	steps{
-	sh "sudo docker-compose pull && sudo -E DB_PASSWORD=${DB_PASSWORD} docker-compose up -d"
+	sh "sudo docker-compose pull && sudo -E DB_PASSWORD=password docker-compose up -d"
 	}
 }
 }
